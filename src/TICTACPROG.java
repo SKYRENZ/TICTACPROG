@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 public class TICTACPROG {
 
-	private JFrame frame;
+	 JFrame PLAYframe;
 	private JTextField xCount;
 	private JTextField oCount;
 	private int xCount1=0;
@@ -42,7 +42,7 @@ public class TICTACPROG {
 			public void run() {
 				try {
 					TICTACPROG window = new TICTACPROG();
-					window.frame.setVisible(true);
+					window.PLAYframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,42 +61,42 @@ public class TICTACPROG {
 	{
 		//for player X only //
 		if(b1==1 && b2==1 && b3==1) {
-			JOptionPane.showMessageDialog(frame, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 		}
 		else if(b4 == 1 && b5 == 1 && b6 == 1){
-			JOptionPane.showMessageDialog(frame, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 		}
 		else if(b7 == 1 && b8 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(frame, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 		}
 		else if(b1 == 1 && b4 == 1 && b7 == 1){
-			JOptionPane.showMessageDialog(frame, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 		}
 		else if(b2 == 1 && b5 == 1 && b8 == 1){
-			JOptionPane.showMessageDialog(frame, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 		}
 		else if(b3 == 1 && b6 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(frame, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 		}
 		else if(b1 == 1 && b5 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(frame, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 		}
 		else if(b3 == 1 && b5 == 1 && b7 == 1){
-			JOptionPane.showMessageDialog(frame, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 		}
@@ -105,47 +105,47 @@ public class TICTACPROG {
 		
 		//for player O only//
 		else if(b1==0 && b2==0 && b3==0) {
-			JOptionPane.showMessageDialog(frame, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 		}
 		else if(b4 == 0 && b5 == 0 && b6 == 0){
-			JOptionPane.showMessageDialog(frame, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 		}
 		else if(b7 == 0 && b8 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(frame, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 		}
 		else if(b1 == 0 && b4 == 0 && b7 == 0){
-			JOptionPane.showMessageDialog(frame, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 		}
 		else if(b2 == 0 && b5 == 0 && b8 == 0){
-			JOptionPane.showMessageDialog(frame, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 		}
 		else if(b3 == 0 && b6 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(frame, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 		}
 		else if(b1 == 0 && b5 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(frame, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 		}
 		else if(b3 == 0 && b5 == 0 && b7 == 0){
-			JOptionPane.showMessageDialog(frame, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 		}
 		else if( i == 9){
-			JOptionPane.showMessageDialog(frame, "No one wins!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(PLAYframe, "No one wins!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 		}
@@ -167,14 +167,14 @@ public class TICTACPROG {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 800, 614, 422);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		PLAYframe = new JFrame();
+		PLAYframe.setBounds(100, 800, 604, 414);
+		PLAYframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		PLAYframe.getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		PLAYframe.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(3, 5, 2, 2));
 		
 		JPanel panel_1 = new JPanel();
@@ -509,8 +509,8 @@ public class TICTACPROG {
 		BTNEXIT.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				frame = new JFrame("Exit");
-				if(JOptionPane.showConfirmDialog(frame, "Confirm you want to Exit", "Tic Tac Toe" , JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION) {
+				PLAYframe = new JFrame("Exit");
+				if(JOptionPane.showConfirmDialog(PLAYframe, "Confirm you want to Exit", "Tic Tac Toe" , JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION) {
 					System.exit(0);
 				}
 			}
