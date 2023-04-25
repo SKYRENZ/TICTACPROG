@@ -171,6 +171,8 @@ public class TICTACPROG {
 		PLAYframe.setBounds(100, 800, 604, 414);
 		PLAYframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		PLAYframe.getContentPane().setLayout(new BorderLayout(0, 0));
+		PLAYframe.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		PLAYframe.setVisible(true);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
