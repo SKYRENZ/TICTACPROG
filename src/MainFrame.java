@@ -49,7 +49,7 @@ public class MainFrame {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				TICTACPROG pf = new TICTACPROG();
+				TICTACPROG pf = new TICTACPROG();  /**yan*/
 				pf.PLAYframe.setVisible(true);
 				mainFrame.dispose();
 				
