@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import java.sql.*;
+
 public class TICTACPROG {
 
 	 JFrame PLAYframe;
@@ -33,11 +35,21 @@ public class TICTACPROG {
 	private int b8=10;
 	private int b9=10;
 	private int i=0;
+
 	/**
 	 * 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+	           Class.forName("com.mysql.cj.jdbc.Driver");
+	           Connection con=DriverManager.getConnection
+	                   ("jdbc:mysql://localhost:3306/sakila","root","tictacprog");
+
+	          PreparedStatement pst = con.prepareStatement("INSERT INTO matchhistory.history( WINNER) VALUE (?)");
+	       }
+		
+	       catch (Exception e) {}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,7 +58,12 @@ public class TICTACPROG {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
+				
 			}
+			
+			
+			
 		});
 	}
 
@@ -57,6 +74,50 @@ public class TICTACPROG {
 		initialize();
 	}
 	
+	//for sql //
+	public void resultx() {
+	   
+		String winner ="Player X Win";
+		try {
+	           Class.forName("com.mysql.cj.jdbc.Driver");
+	           Connection con=DriverManager.getConnection
+	                   ("jdbc:mysql://localhost:3306/tictac","root","chocolates");
+	           
+	           String query = "INSERT INTO tictac.history ( winner) VALUES ( ?)";
+	            PreparedStatement statement = con.prepareStatement(query );
+	            statement.setString(1, winner);
+	            statement.executeUpdate();
+	            statement.close();
+	            con.close();
+	            System.out.println("Message stored in database: " + winner);
+	       }
+		
+	       catch (Exception e) {}
+		
+	}
+	public void resulto() {
+		   
+		String winner ="Player O Win";
+		try {
+	           Class.forName("com.mysql.cj.jdbc.Driver");
+	           Connection con=DriverManager.getConnection
+	                   ("jdbc:mysql://localhost:3306/tictac","root","chocolates");
+	           
+	           String query = "INSERT INTO tictac.history ( winner) VALUES ( ?)";
+	            PreparedStatement statement = con.prepareStatement(query );
+	            statement.setString(1, winner);
+	            statement.executeUpdate();
+	            statement.close();
+	            con.close();
+	            System.out.println("Message stored in database: " + winner);
+	       }
+		
+	       catch (Exception e) {}
+		
+	}
+	// for sql // 
+	
+	//game logic//
 	private void winningGame()
 	{
 		//for player X only //
@@ -64,41 +125,50 @@ public class TICTACPROG {
 			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
+			resultx();
+			
 		}
 		else if(b4 == 1 && b5 == 1 && b6 == 1){
 			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
+			resultx();
 		}
 		else if(b7 == 1 && b8 == 1 && b9 == 1){
 			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
+			resultx();
 		}
 		else if(b1 == 1 && b4 == 1 && b7 == 1){
 			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
+			resultx();
 		}
 		else if(b2 == 1 && b5 == 1 && b8 == 1){
 			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
+			resultx();
 		}
 		else if(b3 == 1 && b6 == 1 && b9 == 1){
 			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
+			resultx();
 		}
 		else if(b1 == 1 && b5 == 1 && b9 == 1){
 			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
+			resultx();
 		}
 		else if(b3 == 1 && b5 == 1 && b7 == 1){
 			JOptionPane.showMessageDialog(PLAYframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
+			resultx();
 		}
 		
 		
@@ -108,48 +178,58 @@ public class TICTACPROG {
 			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
+			resulto();
 		}
 		else if(b4 == 0 && b5 == 0 && b6 == 0){
 			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
+			resulto();
 		}
 		else if(b7 == 0 && b8 == 0 && b9 == 0){
 			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
+			resulto();
 		}
 		else if(b1 == 0 && b4 == 0 && b7 == 0){
 			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
+			resulto();
 		}
 		else if(b2 == 0 && b5 == 0 && b8 == 0){
 			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
+			resulto();
 		}
 		else if(b3 == 0 && b6 == 0 && b9 == 0){
 			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
+			resulto();
 		}
 		else if(b1 == 0 && b5 == 0 && b9 == 0){
 			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
+			resulto();
 		}
 		else if(b3 == 0 && b5 == 0 && b7 == 0){
 			JOptionPane.showMessageDialog(PLAYframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
+			resulto();
 		}
 		else if( i == 9){
 			JOptionPane.showMessageDialog(PLAYframe, "No one wins!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 		}
+	//game logic//
 	
+	//alternate click for X and O//
 	private void choosePlayer() 
 	{
 		
@@ -162,6 +242,7 @@ public class TICTACPROG {
 			startGame="X";
 		}
 	}
+	//alternate click for X and O//
 
 	/**
 	 * Initialize the contents of the frame.
