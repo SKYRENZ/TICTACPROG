@@ -40,7 +40,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		mainFrame = new JFrame();
-		mainFrame.setBounds(100, 100, 541, 435);
+		mainFrame.setBounds(500, 250, 541, 435);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.getContentPane().setLayout(null);
 		
@@ -75,18 +75,5 @@ public class MainFrame {
 		button_2.setBounds(191, 308, 150, 40);
 		mainFrame.getContentPane().add(button_2);
 		
-		Button button_3 = new Button("OPTION");
-		button_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				OptionFrame opf = new OptionFrame();
-				opf.optionFrame.setVisible(true);
-				mainFrame.dispose();
-				
-			}
-		});
-		button_3.setBounds(191, 253, 150, 40);
-		mainFrame.getContentPane().add(button_3);
 	}
-
 }

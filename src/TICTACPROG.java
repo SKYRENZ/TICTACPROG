@@ -16,9 +16,11 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.sql.*;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class TICTACPROG {
-
+     
 	 JFrame PLAYframe;
 	private JTextField xCount;
 	private JTextField oCount;
@@ -41,15 +43,6 @@ public class TICTACPROG {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		try {
-	           Class.forName("com.mysql.cj.jdbc.Driver");
-	           Connection con=DriverManager.getConnection
-	                   ("jdbc:mysql://localhost:3306/sakila","root","tictacprog");
-
-	          PreparedStatement pst = con.prepareStatement("INSERT INTO matchhistory.history( WINNER) VALUE (?)");
-	       }
-		
-	       catch (Exception e) {}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -66,7 +59,7 @@ public class TICTACPROG {
 			
 		});
 	}
-
+	
 	/**
 	 * Create the application.
 	 */
@@ -74,6 +67,9 @@ public class TICTACPROG {
 		initialize();
 	}
 	
+	
+	    
+	    
 	//for sql //
 	public void resultx() {
 	   
@@ -247,7 +243,7 @@ public class TICTACPROG {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		PLAYframe = new JFrame();
 		PLAYframe.setBounds(100, 800, 604, 414);
 		PLAYframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -283,7 +279,7 @@ public class TICTACPROG {
 				choosePlayer();
 				winningGame();
 		}
-
+			
 		});
 		btn1.setFont(new Font("Tempus Sans ITC", Font.BOLD, 80));
 		panel_1.add(btn1, BorderLayout.CENTER);
