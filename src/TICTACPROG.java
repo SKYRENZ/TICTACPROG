@@ -7,7 +7,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.GridLayout;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -16,8 +15,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.sql.*;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
+
 
 public class TICTACPROG {
      
@@ -77,9 +75,9 @@ public class TICTACPROG {
 		try {
 	           Class.forName("com.mysql.cj.jdbc.Driver");
 	           Connection con=DriverManager.getConnection
-	                   ("jdbc:mysql://localhost:3306/tictac","root","chocolates");
+	                   ("jdbc:mysql://localhost:3306/test1","root","chocolates");
 	           
-	           String query = "INSERT INTO tictac.history ( winner) VALUES ( ?)";
+	           String query = "INSERT INTO test1.testing ( winner) VALUES ( ?)";
 	            PreparedStatement statement = con.prepareStatement(query );
 	            statement.setString(1, winner);
 	            statement.executeUpdate();
@@ -89,7 +87,6 @@ public class TICTACPROG {
 	       }
 		
 	       catch (Exception e) {}
-		
 	}
 	public void resulto() {
 		   
@@ -97,9 +94,9 @@ public class TICTACPROG {
 		try {
 	           Class.forName("com.mysql.cj.jdbc.Driver");
 	           Connection con=DriverManager.getConnection
-	                   ("jdbc:mysql://localhost:3306/tictac","root","chocolates");
+	                   ("jdbc:mysql://localhost:3306/test1","root","chocolates");
 	           
-	           String query = "INSERT INTO tictac.history ( winner) VALUES ( ?)";
+	           String query = "INSERT INTO test1.testing ( winner) VALUES ( ?)";
 	            PreparedStatement statement = con.prepareStatement(query );
 	            statement.setString(1, winner);
 	            statement.executeUpdate();
@@ -596,6 +593,11 @@ public class TICTACPROG {
 		});
 		BTNEXIT.setFont(new Font("Tempus Sans ITC", Font.BOLD, 28));
 		panel_15.add(BTNEXIT, BorderLayout.CENTER);
+	}
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

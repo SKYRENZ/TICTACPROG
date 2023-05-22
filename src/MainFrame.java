@@ -1,16 +1,24 @@
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
-import java.awt.Button;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
+import java.awt.Font;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.JCheckBox;
 
-public class MainFrame {
+public class MainFrame{
 
-	 JFrame mainFrame;
+	public JFrame mainframe;
 
 	/**
 	 * Launch the application.
@@ -20,7 +28,7 @@ public class MainFrame {
 			public void run() {
 				try {
 					MainFrame window = new MainFrame();
-					window.mainFrame.setVisible(true);
+					window.mainframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,41 +47,90 @@ public class MainFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		mainFrame = new JFrame();
-		mainFrame.setBounds(500, 250, 541, 435);
-		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainFrame.getContentPane().setLayout(null);
+		mainframe = new JFrame();
+		mainframe.setTitle("TIC-TAC-PROG");
+		mainframe.setBounds(100, 100, 876, 571);
+		mainframe.setLocationRelativeTo(null);
+        mainframe.setResizable(false);
+		mainframe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\1.png"));
+		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		Button button = new Button("PLAY");
-		button.setBackground(Color.LIGHT_GRAY);
-		button.addActionListener(new ActionListener() {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 0, 0));
+		panel.setForeground(new Color(0, 255, 0));
+		mainframe.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(null);
+		
+		JButton playbutton = new JButton("");
+		 playbutton.setBorderPainted(false);
+		playbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				TICTACPROG pf = new TICTACPROG();  /**yan*/
-				pf.PLAYframe.setVisible(true);
-				mainFrame.dispose();
-				
+				GAMEFRAMEBNW gf = new GAMEFRAMEBNW();
+				gf.GAMEframeBNW.setVisible(true);
+				mainframe.dispose();
 			}
 		});
-		button.setBounds(191, 137, 150, 40);
-		mainFrame.getContentPane().add(button);
+		playbutton.setForeground(new Color(128, 255, 0));
+		playbutton.setBackground(new Color(0, 0, 0));
+		playbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\2.png"));
+		playbutton.setBounds(101, 159, 169, 74);
+		panel.add(playbutton);
 		
-		Button button_1 = new Button("MATCH HISTORY");
-		button_1.setBounds(191, 196, 150, 40);
-		mainFrame.getContentPane().add(button_1);
-		
-		Button button_2 = new Button("EXIT");
-		button_2.addActionListener(new ActionListener() {
+		JButton exitbutton = new JButton("");
+		exitbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				mainFrame = new JFrame("Exit");
-				if(JOptionPane.showConfirmDialog(mainFrame, "Confirm you want to Exit", "Tic Tac Toe" , JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION) {
-					System.exit(0); 
+				mainframe = new JFrame("Exit");
+				if(JOptionPane.showConfirmDialog(mainframe, "Confirm you want to Exit", "Tic Tac Toe" , JOptionPane.YES_NO_OPTION)== JOptionPane.YES_NO_OPTION) {
+					System.exit(0);
 				}
 			}
-			});
-		button_2.setBounds(191, 308, 150, 40);
-		mainFrame.getContentPane().add(button_2);
+		});
+		 exitbutton.setBorderPainted(false);
+		exitbutton.setForeground(new Color(0, 255, 0));
+		exitbutton.setBackground(new Color(0, 0, 0));
+		exitbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\3.png"));
+		exitbutton.setBounds(101, 408, 169, 80);
+		panel.add(exitbutton);
 		
+		JButton historybutton = new JButton("");
+		historybutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+		MatchHistoryFrame mh = new MatchHistoryFrame();
+		mh.createAndShowGUI();
+		mainframe.dispose();
+			}
+		});
+		historybutton.setBackground(new Color(0, 0, 0));
+		 historybutton.setBorderPainted(false);
+		historybutton.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\4.png"));
+		historybutton.setBounds(101, 232, 169, 86);
+		panel.add(historybutton);
+		
+		JButton aboutbutton = new JButton("");
+		aboutbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ABOUTUS AU = new ABOUTUS();
+				AU.aboutus.setVisible(true);
+				mainframe.dispose();
+					}
+				
+			}
+		);
+		 aboutbutton.setBorderPainted(false);
+		aboutbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\5.png"));
+		aboutbutton.setBackground(new Color(0, 0, 0));
+		aboutbutton.setBounds(101, 318, 169, 88);
+		panel.add(aboutbutton);
+		
+		JLabel grid = new JLabel("");
+		grid.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\7.png"));
+		grid.setBounds(306, 105, 479, 398);
+		panel.add(grid);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\6.png"));
+		lblNewLabel.setBounds(317, -18, 468, 154);
+		panel.add(lblNewLabel);
 	}
 }
