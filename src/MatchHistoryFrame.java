@@ -21,6 +21,10 @@ import javax.swing.border.EtchedBorder;
 import java.awt.Button;
 import java.awt.Font;
 import java.awt.Toolkit;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.Component;
 
 public class MatchHistoryFrame {
     private static final String URL = "jdbc:mysql://localhost:3306/test1";
@@ -31,7 +35,7 @@ public class MatchHistoryFrame {
     private JFrame historyframe;
     private JTable table;
     private DefaultTableModel tableModel;
-    private JPanel panel;
+    private JButton btnNewButton;
 
     public static void main(String[] args) {
         MatchHistoryFrame historyFrame = new MatchHistoryFrame();
@@ -41,6 +45,7 @@ public class MatchHistoryFrame {
     public void createAndShowGUI() {
         // Create the JFrame and initialize the table model
         historyframe = new JFrame();
+        historyframe.getContentPane().setBackground(new Color(0, 0, 0));
         historyframe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\1.png"));
         historyframe.setTitle("TIC-TAC-PROG");
         historyframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,31 +72,31 @@ public class MatchHistoryFrame {
             }
         });
         historyframe.getContentPane().setLayout(null);
-
-        // Add the JTable to a JScrollPane
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(0, 0, 384, 402);
-        historyframe.getContentPane().add(scrollPane);
         
-        panel = new JPanel();
-        panel.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(128, 255, 0), new Color(128, 255, 0)));
-        panel.setBounds(290, 718, 84, 32);
+        JPanel panel = new JPanel();
+        panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(128, 255, 0), new Color(128, 255, 0)));
+        panel.setBounds(149, 712, 77, 38);
         historyframe.getContentPane().add(panel);
         panel.setLayout(new BorderLayout(0, 0));
         
-        Button BACKBTN = new Button("BACK");
-        BACKBTN.addActionListener(new ActionListener() {
+        btnNewButton = new JButton("BACK");
+        btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-
-				MainFrame mf = new MainFrame();
-				mf.mainframe.setVisible(true);
-				historyframe.dispose();
+        		
+        		MainFrame mf = new MainFrame();
+        		mf.mainframe.setVisible(true);
+        		historyframe.dispose();
         	}
         });
-        BACKBTN.setForeground(new Color(128, 255, 0));
-        BACKBTN.setFont(new Font("Castellar", Font.BOLD, 23));
-        BACKBTN.setBackground(Color.BLACK);
-        panel.add(BACKBTN, BorderLayout.CENTER);
+        btnNewButton.setForeground(new Color(128, 255, 0));
+        btnNewButton.setBackground(new Color(0, 0, 0));
+        btnNewButton.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 14));
+        panel.add(btnNewButton, BorderLayout.CENTER);
+
+        // Add the JTable to a JScrollPane
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(0, 0, 384, 709);
+        historyframe.getContentPane().add(scrollPane);
 
         // Show the JFrame
         historyframe.setVisible(true);

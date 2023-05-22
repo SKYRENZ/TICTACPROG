@@ -604,6 +604,9 @@ public class GAMEFRAMEBNW{
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("RED AND BLUE");
+		mntmNewMenuItem.setSelected(true);
+		mntmNewMenuItem.setForeground(new Color(0, 128, 255));
+		mntmNewMenuItem.setBackground(new Color(255, 0, 0));
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GAMEFRAME window = new GAMEFRAME();
@@ -611,6 +614,20 @@ public class GAMEFRAMEBNW{
 				GAMEframeBNW.dispose();
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("1 0 1");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				GAMEFRAMEBNW101 window = new GAMEFRAMEBNW101();
+				window.GAMEframeBNW101.setVisible(true);
+				GAMEframeBNW.dispose();
+			}
+		});
+		mntmNewMenuItem_1.setSelected(true);
+		mntmNewMenuItem_1.setForeground(new Color(128, 255, 0));
+		mntmNewMenuItem_1.setBackground(new Color(0, 0, 0));
+		mnNewMenu.add(mntmNewMenuItem_1);
 		mnNewMenu.add(mntmNewMenuItem);
 	}
 

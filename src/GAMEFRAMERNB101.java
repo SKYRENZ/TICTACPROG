@@ -23,9 +23,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Toolkit;
 
-public class GAMEFRAME{
+public class GAMEFRAMERNB101{
 
-	 	JFrame GAMEframe;
+	 	JFrame GAMEframeRNB101;
 	    JButton btn1; // Declare the buttons at the class level
 	    JButton btn2;
 	    JButton btn3;
@@ -39,7 +39,7 @@ public class GAMEFRAME{
 	    private JTextField oCount;
 	    private int xCount1;
 	    private int oCount1;
-	    private String startGame = "X";
+	    private String startGame = "1";
 	    private int b1=10;
 		private int b2=10;
 		private int b3=10;
@@ -58,8 +58,8 @@ public class GAMEFRAME{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GAMEFRAME window = new GAMEFRAME();
-					window.GAMEframe.setVisible(true);
+					GAMEFRAMERNB101 window = new GAMEFRAMERNB101();
+					window.GAMEframeRNB101.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -70,18 +70,18 @@ public class GAMEFRAME{
 	/**
 	 * Create the application.
 	 */
-	public GAMEFRAME() {
+	public GAMEFRAMERNB101() {
 		initialize();
 	}
 	
 	//alternate click for X and O//
 	private void choosePlayer() {
-		if(startGame.equalsIgnoreCase("X"))
+		if(startGame.equalsIgnoreCase("1"))
 		{
-			startGame="O";
+			startGame="0";
 		}
 		else {
-			startGame="X";
+			startGame="1";
 		}
 	}
 	//alternate click for X and O//
@@ -89,7 +89,7 @@ public class GAMEFRAME{
 	// for sql //
 	public void resultx() {
 		   
-		String winner ="Player X Win";
+		String winner ="Player ONE Win";
 		try {
 	           Class.forName("com.mysql.cj.jdbc.Driver");
 	           Connection con=DriverManager.getConnection
@@ -108,7 +108,7 @@ public class GAMEFRAME{
 	}
 	public void resulto() {
 		   
-		String winner ="Player O Win";
+		String winner ="Player ZERO Win";
 		try {
 	           Class.forName("com.mysql.cj.jdbc.Driver");
 	           Connection con=DriverManager.getConnection
@@ -132,50 +132,50 @@ public class GAMEFRAME{
 	{
 		//for player X only //
 		if(b1==1 && b2==1 && b3==1) {
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ONE Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 			resultx();
 			
 		}
 		else if(b4 == 1 && b5 == 1 && b6 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ONE Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 			resultx();
 		}
 		else if(b7 == 1 && b8 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ONE Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 			resultx();
 		}
 		else if(b1 == 1 && b4 == 1 && b7 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ONE Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 			resultx();
 		}
 		else if(b2 == 1 && b5 == 1 && b8 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ONE Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 			resultx();
 		}
 		else if(b3 == 1 && b6 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ONE Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 			resultx();
 		}
 		else if(b1 == 1 && b5 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ONE Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 			resultx();
 		}
 		else if(b3 == 1 && b5 == 1 && b7 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ONE Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			xCount1++;
 			xCount.setText(String.valueOf(xCount1));
 			resultx();
@@ -185,55 +185,55 @@ public class GAMEFRAME{
 		
 		//for player O only//
 		else if(b1==0 && b2==0 && b3==0) {
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ZERO Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 			resulto();
 		}
 		else if(b4 == 0 && b5 == 0 && b6 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ZERO Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 			resulto();
 		}
 		else if(b7 == 0 && b8 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ZERO Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 			resulto();
 		}
 		else if(b1 == 0 && b4 == 0 && b7 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ZERO Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 			resulto();
 		}
 		else if(b2 == 0 && b5 == 0 && b8 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ZERO Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 			resulto();
 		}
 		else if(b3 == 0 && b6 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ZERO Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 			resulto();
 		}
 		else if(b1 == 0 && b5 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ZERO Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 			resulto();
 		}
 		else if(b3 == 0 && b5 == 0 && b7 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "Player ZERO Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 			oCount1++;
 			oCount.setText(String.valueOf(oCount1));
 			resulto();
 		}
 		else if( i == 9){
-			JOptionPane.showMessageDialog(GAMEframe, "No one wins!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(GAMEframeRNB101, "No one wins!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
 		}
 		
 		}
@@ -243,18 +243,18 @@ public class GAMEFRAME{
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
-		GAMEframe = new JFrame();
-		GAMEframe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\1.png"));
-		GAMEframe.setTitle("TIC-TAC-PROG");
-		GAMEframe.setBounds(100, 100, 700, 650);
-		GAMEframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GAMEframe.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
-		GAMEframe.setLocationRelativeTo(null);
-		GAMEframe.setResizable(false);
+		GAMEframeRNB101 = new JFrame();
+		GAMEframeRNB101.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\1.png"));
+		GAMEframeRNB101.setTitle("TIC-TAC-PROG");
+		GAMEframeRNB101.setBounds(100, 100, 700, 650);
+		GAMEframeRNB101.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		GAMEframeRNB101.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
+		GAMEframeRNB101.setLocationRelativeTo(null);
+		GAMEframeRNB101.setResizable(false);
 		
 		JPanel MAINpanel = new JPanel();
 		MAINpanel.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(128, 128, 128), new Color(0, 0, 0), new Color(128, 128, 128)));
-		GAMEframe.getContentPane().add(MAINpanel);
+		GAMEframeRNB101.getContentPane().add(MAINpanel);
 		MAINpanel.setLayout(new GridLayout(4, 3, 2, 2));
 		
 		JPanel panel = new JPanel();
@@ -267,7 +267,7 @@ public class GAMEFRAME{
 			public void actionPerformed(ActionEvent e) {
 				MainFrame mf = new MainFrame();
 				mf.mainframe.setVisible(true);
-				GAMEframe.dispose();
+				GAMEframeRNB101.dispose();
 					}
 			}
 		);
@@ -360,11 +360,11 @@ public class GAMEFRAME{
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		btn1 = new JButton("");
-		btn1.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn1.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn1.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn1.setForeground(Color.RED);
 					b1=1;
@@ -387,11 +387,11 @@ public class GAMEFRAME{
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		btn2 = new JButton("");
-		btn2.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn2.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn2.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn2.setForeground(Color.RED);
 					b2=1;
@@ -413,11 +413,11 @@ public class GAMEFRAME{
 		MAINpanel.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		btn3 = new JButton("");
-		btn3.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn3.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn3.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn3.setForeground(Color.RED);
 					b3=1;
@@ -440,11 +440,11 @@ public class GAMEFRAME{
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
 		btn4 = new JButton("");
-		btn4.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn4.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn4.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn4.setForeground(Color.RED);
 					b4=1;
@@ -467,11 +467,11 @@ public class GAMEFRAME{
 		panel_7.setLayout(new BorderLayout(0, 0));
 		
 		btn5 = new JButton("");
-		btn5.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn5.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn5.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn5.setForeground(Color.RED);
 					b5=1;
@@ -494,11 +494,11 @@ public class GAMEFRAME{
 		panel_8.setLayout(new BorderLayout(0, 0));
 		
 		btn6 = new JButton("");
-		btn6.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn6.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn6.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn6.setForeground(Color.RED);
 					b6=1;
@@ -521,11 +521,11 @@ public class GAMEFRAME{
 		panel_9.setLayout(new BorderLayout(0, 0));
 		
 		btn7 = new JButton("");
-		btn7.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn7.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn7.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn7.setForeground(Color.RED);
 					b7=1;
@@ -548,11 +548,11 @@ public class GAMEFRAME{
 		panel_10.setLayout(new BorderLayout(0, 0));
 		
 		btn8 = new JButton("");
-		btn8.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn8.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn8.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn8.setForeground(Color.RED);
 					b8=1;
@@ -575,11 +575,11 @@ public class GAMEFRAME{
 		panel_11.setLayout(new BorderLayout(0, 0));
 		
 		btn9 = new JButton("");
-		btn9.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+		btn9.setFont(new Font("Arial Rounded MT Bold", Font.BOLD, 75));
 		btn9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn9.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
+				if(startGame.equalsIgnoreCase("1"))
 				{
 					btn9.setForeground(Color.RED);
 					b9=1;
@@ -597,36 +597,40 @@ public class GAMEFRAME{
 		panel_11.add(btn9, BorderLayout.CENTER);
 		
 		JMenuBar menuBar = new JMenuBar();
-		GAMEframe.setJMenuBar(menuBar);
+		GAMEframeRNB101.setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("THEME");
+		JMenu mnNewMenu = new JMenu("COLOR THEME");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("BLACK AND WHITE");
-		mntmNewMenuItem.setBackground(new Color(0, 0, 0));
 		mntmNewMenuItem.setForeground(new Color(255, 255, 255));
+		mntmNewMenuItem.setBackground(new Color(0, 0, 0));
+		mntmNewMenuItem.setSelected(true);
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GAMEFRAMEBNW window = new GAMEFRAMEBNW();
-				window.GAMEframeBNW.setVisible(true);
-				GAMEframe.dispose();
+				GAMEFRAMEBNW101 window = new GAMEFRAMEBNW101();
+				window.GAMEframeBNW101.setVisible(true);
+				GAMEframeRNB101.dispose();
 			}
 		});
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("1 0 1");
-		mntmNewMenuItem_1.setForeground(new Color(128, 255, 0));
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("X O X");
 		mntmNewMenuItem_1.setBackground(new Color(0, 0, 0));
+		mntmNewMenuItem_1.setForeground(new Color(128, 255, 0));
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GAMEFRAMERNB101 window = new GAMEFRAMERNB101();
-				window.GAMEframeRNB101.setVisible(true);
-				GAMEframe.dispose();
+				GAMEFRAME window = new GAMEFRAME();
+				window.GAMEframe.setVisible(true);
+				GAMEframeRNB101.dispose();
 				
 			}
 		});
 		mntmNewMenuItem_1.setSelected(true);
 		mnNewMenu.add(mntmNewMenuItem_1);
 		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenu mnNewMenu_1 = new JMenu("");
+		menuBar.add(mnNewMenu_1);
 	}
 
 }
