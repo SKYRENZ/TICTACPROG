@@ -1,0 +1,84 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ABOUTUS",
+            "request": "launch",
+            "mainClass": "ABOUTUS",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "GAMEFRAME",
+            "request": "launch",
+            "mainClass": "GAMEFRAME",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "GAMEFRAMEBNW",
+            "request": "launch",
+            "mainClass": "GAMEFRAMEBNW",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "GAMEFRAMEBNW101",
+            "request": "launch",
+            "mainClass": "GAMEFRAMEBNW101",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "GAMEFRAMERNB101",
+            "request": "launch",
+            "mainClass": "GAMEFRAMERNB101",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "MainFrame",
+            "request": "launch",
+            "mainClass": "MainFrame",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "MatchHistoryFrame",
+            "request": "launch",
+            "mainClass": "MatchHistoryFrame",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "OptionFrame",
+            "request": "launch",
+            "mainClass": "OptionFrame",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "PlayFrame",
+            "request": "launch",
+            "mainClass": "PlayFrame",
+            "projectName": "TICTACPROG"
+        },
+        {
+            "type": "java",
+            "name": "TICTACPROG",
+            "request": "launch",
+            "mainClass": "TICTACPROG",
+            "projectName": "TICTACPROG"
+        }
+    ]
+}

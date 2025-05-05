@@ -594,10 +594,4 @@ public class TICTACPROG {
 		BTNEXIT.setFont(new Font("Tempus Sans ITC", Font.BOLD, 28));
 		panel_15.add(BTNEXIT, BorderLayout.CENTER);
 	}
-
-	public void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

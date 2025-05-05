@@ -1,632 +1,265 @@
-import java.awt.EventQueue;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.sql.*;
 
-import javax.swing.JFrame;
-import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
-import java.awt.Color;
-import javax.swing.border.LineBorder;
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.Toolkit;
+public class GAMEFRAME {
 
-public class GAMEFRAME{
+    JFrame GAMEframe;
+    JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    private JTextField xCount, oCount;
+    private int xCount1 = 0, oCount1 = 0;
+    private String startGame = "X";
+    private int b1 = 10, b2 = 10, b3 = 10, b4 = 10, b5 = 10, b6 = 10, b7 = 10, b8 = 10, b9 = 10;
+    private int i = 0;
 
-	 	JFrame GAMEframe;
-	    JButton btn1; // Declare the buttons at the class level
-	    JButton btn2;
-	    JButton btn3;
-	    JButton btn4;
-	    JButton btn5;
-	    JButton btn6;
-	    JButton btn7;
-	    JButton btn8;
-	    JButton btn9;
-	    private JTextField xCount;
-	    private JTextField oCount;
-	    private int xCount1;
-	    private int oCount1;
-	    private String startGame = "X";
-	    private int b1=10;
-		private int b2=10;
-		private int b3=10;
-		private int b4=10;
-		private int b5=10;
-		private int b6=10;
-		private int b7=10;
-		private int b8=10;
-		private int b9=10;
-		private int i=0;
+    // --- Database connection info ---
+    private static final String URL = "jdbc:mysql://localhost:3306/test1";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = ""; // <-- empty for default XAMPP
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GAMEFRAME window = new GAMEFRAME();
-					window.GAMEframe.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                GAMEFRAME window = new GAMEFRAME();
+                window.GAMEframe.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
-	/**
-	 * Create the application.
-	 */
-	public GAMEFRAME() {
-		initialize();
-	}
-	
-	//alternate click for X and O//
-	private void choosePlayer() {
-		if(startGame.equalsIgnoreCase("X"))
-		{
-			startGame="O";
-		}
-		else {
-			startGame="X";
-		}
-	}
-	//alternate click for X and O//
-	
-	// for sql //
+    public GAMEFRAME() {
+        initialize();
+    }
+
+    // Alternate click for X and O
+    private void choosePlayer() {
+        startGame = startGame.equalsIgnoreCase("X") ? "O" : "X";
+    }
+
+    // --- Save winner to database ---
 	public void resultx() {
-		   
-		String winner ="Player X Win";
-		try {
-	           Class.forName("com.mysql.cj.jdbc.Driver");
-	           Connection con=DriverManager.getConnection
-	                   ("jdbc:mysql://localhost:3306/test1","root","chocolates");
-	           
-	           String query = "INSERT INTO test1.testing ( winner) VALUES ( ?)";
-	            PreparedStatement statement = con.prepareStatement(query );
-	            statement.setString(1, winner);
-	            statement.executeUpdate();
-	            statement.close();
-	            con.close();
-	            System.out.println("Message stored in database: " + winner);
-	       }
-		
-	       catch (Exception e) {}
+		DatabaseUtil.saveWinner("Player X Win");
 	}
 	public void resulto() {
-		   
-		String winner ="Player O Win";
-		try {
-	           Class.forName("com.mysql.cj.jdbc.Driver");
-	           Connection con=DriverManager.getConnection
-	                   ("jdbc:mysql://localhost:3306/test1","root","chocolates");
-	           
-	           String query = "INSERT INTO test1.testing ( winner) VALUES ( ?)";
-	            PreparedStatement statement = con.prepareStatement(query );
-	            statement.setString(1, winner);
-	            statement.executeUpdate();
-	            statement.close();
-	            con.close();
-	            System.out.println("Message stored in database: " + winner);
-	       }
-		
-	       catch (Exception e) {}
+		DatabaseUtil.saveWinner("Player O Win");
 	}
-	// for sql //
-	
-	//game logic//
-	private void winningGame()
-	{
-		//for player X only //
-		if(b1==1 && b2==1 && b3==1) {
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			xCount1++;
-			xCount.setText(String.valueOf(xCount1));
-			resultx();
-			
-		}
-		else if(b4 == 1 && b5 == 1 && b6 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			xCount1++;
-			xCount.setText(String.valueOf(xCount1));
-			resultx();
-		}
-		else if(b7 == 1 && b8 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			xCount1++;
-			xCount.setText(String.valueOf(xCount1));
-			resultx();
-		}
-		else if(b1 == 1 && b4 == 1 && b7 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			xCount1++;
-			xCount.setText(String.valueOf(xCount1));
-			resultx();
-		}
-		else if(b2 == 1 && b5 == 1 && b8 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			xCount1++;
-			xCount.setText(String.valueOf(xCount1));
-			resultx();
-		}
-		else if(b3 == 1 && b6 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			xCount1++;
-			xCount.setText(String.valueOf(xCount1));
-			resultx();
-		}
-		else if(b1 == 1 && b5 == 1 && b9 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			xCount1++;
-			xCount.setText(String.valueOf(xCount1));
-			resultx();
-		}
-		else if(b3 == 1 && b5 == 1 && b7 == 1){
-			JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			xCount1++;
-			xCount.setText(String.valueOf(xCount1));
-			resultx();
-		}
-		
-		
-		
-		//for player O only//
-		else if(b1==0 && b2==0 && b3==0) {
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			oCount1++;
-			oCount.setText(String.valueOf(oCount1));
-			resulto();
-		}
-		else if(b4 == 0 && b5 == 0 && b6 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			oCount1++;
-			oCount.setText(String.valueOf(oCount1));
-			resulto();
-		}
-		else if(b7 == 0 && b8 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			oCount1++;
-			oCount.setText(String.valueOf(oCount1));
-			resulto();
-		}
-		else if(b1 == 0 && b4 == 0 && b7 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			oCount1++;
-			oCount.setText(String.valueOf(oCount1));
-			resulto();
-		}
-		else if(b2 == 0 && b5 == 0 && b8 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			oCount1++;
-			oCount.setText(String.valueOf(oCount1));
-			resulto();
-		}
-		else if(b3 == 0 && b6 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			oCount1++;
-			oCount.setText(String.valueOf(oCount1));
-			resulto();
-		}
-		else if(b1 == 0 && b5 == 0 && b9 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			oCount1++;
-			oCount.setText(String.valueOf(oCount1));
-			resulto();
-		}
-		else if(b3 == 0 && b5 == 0 && b7 == 0){
-			JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-			oCount1++;
-			oCount.setText(String.valueOf(oCount1));
-			resulto();
-		}
-		else if( i == 9){
-			JOptionPane.showMessageDialog(GAMEframe, "No one wins!", " Tic tac Toe", JOptionPane.INFORMATION_MESSAGE);
-		}
-		
-		}
-	//game logic//
-	
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	public void initialize() {
-		GAMEframe = new JFrame();
-		GAMEframe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\1.png"));
-		GAMEframe.setTitle("TIC-TAC-PROG");
-		GAMEframe.setBounds(100, 100, 700, 650);
-		GAMEframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GAMEframe.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
-		GAMEframe.setLocationRelativeTo(null);
-		GAMEframe.setResizable(false);
-		
-		JPanel MAINpanel = new JPanel();
-		MAINpanel.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(128, 128, 128), new Color(0, 0, 0), new Color(128, 128, 128)));
-		GAMEframe.getContentPane().add(MAINpanel);
-		MAINpanel.setLayout(new GridLayout(4, 3, 2, 2));
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
-		
-		JButton BTNBACK = new JButton("BACK");
-		BTNBACK.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainFrame mf = new MainFrame();
-				mf.mainframe.setVisible(true);
-				GAMEframe.dispose();
-					}
-			}
-		);
-		BTNBACK.setForeground(new Color(0, 255, 255));
-		BTNBACK.setBackground(new Color(255, 128, 128));
-		BTNBACK.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 35));
-		panel.add(BTNBACK, BorderLayout.CENTER);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
-		
-		JButton BTNRESET = new JButton("RESET");
-		BTNRESET.setForeground(new Color(255, 0, 0));
-		BTNRESET.setBackground(new Color(128, 255, 255));
-		BTNRESET.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				btn1.setText("");
-				btn2.setText("");
-				btn3.setText("");
-				btn4.setText("");
-				btn5.setText("");
-				btn6.setText("");
-				btn7.setText("");
-				btn8.setText("");
-				btn9.setText("");
-				
-			}
-		});
-		BTNRESET.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 35));
-		panel_1.add(BTNRESET, BorderLayout.CENTER);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_2);
-		panel_2.setLayout(new GridLayout(2, 2, 0, 0));
-		
-		JPanel panel_12 = new JPanel();
-		panel_12.setBackground(new Color(255, 0, 0));
-		panel_12.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.add(panel_12);
-		panel_12.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel = new JLabel("PLAYER X");
-		lblNewLabel.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 17));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBackground(new Color(255, 0, 0));
-		panel_12.add(lblNewLabel, BorderLayout.CENTER);
-		
-		JPanel panel_13 = new JPanel();
-		panel_13.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.add(panel_13);
-		panel_13.setLayout(new BorderLayout(0, 0));
-		
-		xCount = new JTextField();
-		xCount.setText("0");
-		xCount.setHorizontalAlignment(SwingConstants.CENTER);
-		xCount.setBackground(new Color(255, 128, 128));
-		panel_13.add(xCount, BorderLayout.CENTER);
-		xCount.setColumns(10);
-		
-		JPanel panel_14 = new JPanel();
-		panel_14.setBackground(new Color(0, 255, 255));
-		panel_14.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.add(panel_14);
-		panel_14.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_1 = new JLabel("PLAYER O");
-		lblNewLabel_1.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 17));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_14.add(lblNewLabel_1, BorderLayout.CENTER);
-		
-		JPanel panel_15 = new JPanel();
-		panel_15.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.add(panel_15);
-		panel_15.setLayout(new BorderLayout(0, 0));
-		
-		oCount = new JTextField();
-		oCount.setHorizontalAlignment(SwingConstants.CENTER);
-		oCount.setText("0");
-		oCount.setBackground(new Color(128, 255, 255));
-		panel_15.add(oCount, BorderLayout.CENTER);
-		oCount.setColumns(10);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_3);
-		panel_3.setLayout(new BorderLayout(0, 0));
-		
-		btn1 = new JButton("");
-		btn1.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn1.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn1.setForeground(Color.RED);
-					b1=1;
-					i++;
-				}
-				else {
-					btn1.setForeground(Color.BLUE);
-					b1=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-			}
-		});
-		panel_3.add(btn1, BorderLayout.CENTER);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
-		
-		btn2 = new JButton("");
-		btn2.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn2.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn2.setForeground(Color.RED);
-					b2=1;
-					i++;
-				}
-				else {
-					btn2.setForeground(Color.BLUE);
-					b2=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-			}
-		});
-		panel_4.add(btn2, BorderLayout.CENTER);
-		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_5);
-		panel_5.setLayout(new BorderLayout(0, 0));
-		btn3 = new JButton("");
-		btn3.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn3.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn3.setForeground(Color.RED);
-					b3=1;
-					i++;
-				}
-				else {
-					btn3.setForeground(Color.BLUE);
-					b3=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-					}
-				});
-		panel_5.add(btn3, BorderLayout.CENTER);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_6);
-		panel_6.setLayout(new BorderLayout(0, 0));
-		
-		btn4 = new JButton("");
-		btn4.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn4.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn4.setForeground(Color.RED);
-					b4=1;
-					i++;
-				}
-				else {
-					btn4.setForeground(Color.BLUE);
-					b4=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-			}
-		});
-		panel_6.add(btn4, BorderLayout.CENTER);
-		
-		JPanel panel_7 = new JPanel();
-		panel_7.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_7);
-		panel_7.setLayout(new BorderLayout(0, 0));
-		
-		btn5 = new JButton("");
-		btn5.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn5.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn5.setForeground(Color.RED);
-					b5=1;
-					i++;
-				}
-				else {
-					btn5.setForeground(Color.BLUE);
-					b5=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-			}
-		});
-		panel_7.add(btn5, BorderLayout.CENTER);
-		
-		JPanel panel_8 = new JPanel();
-		panel_8.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_8);
-		panel_8.setLayout(new BorderLayout(0, 0));
-		
-		btn6 = new JButton("");
-		btn6.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn6.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn6.setForeground(Color.RED);
-					b6=1;
-					i++;
-				}
-				else {
-					btn6.setForeground(Color.BLUE);
-					b6=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-			}
-		});
-		panel_8.add(btn6, BorderLayout.CENTER);
-		
-		JPanel panel_9 = new JPanel();
-		panel_9.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_9);
-		panel_9.setLayout(new BorderLayout(0, 0));
-		
-		btn7 = new JButton("");
-		btn7.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn7.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn7.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn7.setForeground(Color.RED);
-					b7=1;
-					i++;
-				}
-				else {
-					btn7.setForeground(Color.BLUE);
-					b7=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-			}
-		});
-		panel_9.add(btn7, BorderLayout.CENTER);
-		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_10);
-		panel_10.setLayout(new BorderLayout(0, 0));
-		
-		btn8 = new JButton("");
-		btn8.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn8.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn8.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn8.setForeground(Color.RED);
-					b8=1;
-					i++;
-				}
-				else {
-					btn8.setForeground(Color.BLUE);
-					b8=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-			}
-		});
-		panel_10.add(btn8, BorderLayout.CENTER);
-		
-		JPanel panel_11 = new JPanel();
-		panel_11.setBorder(new LineBorder(new Color(128, 64, 0), 2));
-		MAINpanel.add(panel_11);
-		panel_11.setLayout(new BorderLayout(0, 0));
-		
-		btn9 = new JButton("");
-		btn9.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
-		btn9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn9.setText(startGame);
-				if(startGame.equalsIgnoreCase("X"))
-				{
-					btn9.setForeground(Color.RED);
-					b9=1;
-					i++;
-				}
-				else {
-					btn9.setForeground(Color.BLUE);
-					b9=0;
-					i++;
-				}
-				choosePlayer();
-				winningGame();
-			}
-		});
-		panel_11.add(btn9, BorderLayout.CENTER);
-		
-		JMenuBar menuBar = new JMenuBar();
-		GAMEframe.setJMenuBar(menuBar);
-		
-		JMenu mnNewMenu = new JMenu("THEME");
-		menuBar.add(mnNewMenu);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("BLACK AND WHITE");
-		mntmNewMenuItem.setBackground(new Color(0, 0, 0));
-		mntmNewMenuItem.setForeground(new Color(255, 255, 255));
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				GAMEFRAMEBNW window = new GAMEFRAMEBNW();
-				window.GAMEframeBNW.setVisible(true);
-				GAMEframe.dispose();
-			}
-		});
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("1 0 1");
-		mntmNewMenuItem_1.setForeground(new Color(128, 255, 0));
-		mntmNewMenuItem_1.setBackground(new Color(0, 0, 0));
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				GAMEFRAMERNB101 window = new GAMEFRAMERNB101();
-				window.GAMEframeRNB101.setVisible(true);
-				GAMEframe.dispose();
-				
-			}
-		});
-		mntmNewMenuItem_1.setSelected(true);
-		mnNewMenu.add(mntmNewMenuItem_1);
-		mnNewMenu.add(mntmNewMenuItem);
-	}
+    private void saveWinnerToDB(String winner) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            String query = "INSERT INTO testing (winner) VALUES (?)";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1, winner);
+            statement.executeUpdate();
+            statement.close();
+            con.close();
+            System.out.println("Message stored in database: " + winner);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(GAMEframe, "DB Error: " + e.getMessage());
+        }
+    }
 
+    // --- Game logic ---
+    private void winningGame() {
+        // Player X wins
+        if ((b1 == 1 && b2 == 1 && b3 == 1) ||
+            (b4 == 1 && b5 == 1 && b6 == 1) ||
+            (b7 == 1 && b8 == 1 && b9 == 1) ||
+            (b1 == 1 && b4 == 1 && b7 == 1) ||
+            (b2 == 1 && b5 == 1 && b8 == 1) ||
+            (b3 == 1 && b6 == 1 && b9 == 1) ||
+            (b1 == 1 && b5 == 1 && b9 == 1) ||
+            (b3 == 1 && b5 == 1 && b7 == 1)) {
+            JOptionPane.showMessageDialog(GAMEframe, "Player X Win!", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
+            xCount1++;
+            xCount.setText(String.valueOf(xCount1));
+            resultx();
+            disableButtons();
+        }
+        // Player O wins
+        else if ((b1 == 0 && b2 == 0 && b3 == 0) ||
+                 (b4 == 0 && b5 == 0 && b6 == 0) ||
+                 (b7 == 0 && b8 == 0 && b9 == 0) ||
+                 (b1 == 0 && b4 == 0 && b7 == 0) ||
+                 (b2 == 0 && b5 == 0 && b8 == 0) ||
+                 (b3 == 0 && b6 == 0 && b9 == 0) ||
+                 (b1 == 0 && b5 == 0 && b9 == 0) ||
+                 (b3 == 0 && b5 == 0 && b7 == 0)) {
+            JOptionPane.showMessageDialog(GAMEframe, "Player O Win!", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
+            oCount1++;
+            oCount.setText(String.valueOf(oCount1));
+            resulto();
+            disableButtons();
+        }
+        // Draw
+        else if (i == 9) {
+            JOptionPane.showMessageDialog(GAMEframe, "No one wins!", "Tic Tac Toe", JOptionPane.INFORMATION_MESSAGE);
+            disableButtons();
+        }
+    }
+
+    private void disableButtons() {
+        btn1.setEnabled(false); btn2.setEnabled(false); btn3.setEnabled(false);
+        btn4.setEnabled(false); btn5.setEnabled(false); btn6.setEnabled(false);
+        btn7.setEnabled(false); btn8.setEnabled(false); btn9.setEnabled(false);
+    }
+
+    private void resetGame() {
+        btn1.setText(""); btn2.setText(""); btn3.setText("");
+        btn4.setText(""); btn5.setText(""); btn6.setText("");
+        btn7.setText(""); btn8.setText(""); btn9.setText("");
+        btn1.setEnabled(true); btn2.setEnabled(true); btn3.setEnabled(true);
+        btn4.setEnabled(true); btn5.setEnabled(true); btn6.setEnabled(true);
+        btn7.setEnabled(true); btn8.setEnabled(true); btn9.setEnabled(true);
+        b1 = b2 = b3 = b4 = b5 = b6 = b7 = b8 = b9 = 10;
+        i = 0;
+        startGame = "X";
+    }
+
+    public void initialize() {
+        GAMEframe = new JFrame();
+        GAMEframe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\1.png"));
+        GAMEframe.setTitle("TIC-TAC-PROG");
+        GAMEframe.setBounds(100, 100, 700, 650);
+        GAMEframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GAMEframe.getContentPane().setLayout(new GridLayout(1, 0, 0, 0));
+        GAMEframe.setLocationRelativeTo(null);
+        GAMEframe.setResizable(false);
+
+        JPanel MAINpanel = new JPanel();
+        MAINpanel.setBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 0), new Color(128, 128, 128), new Color(0, 0, 0), new Color(128, 128, 128)));
+        GAMEframe.getContentPane().add(MAINpanel);
+        MAINpanel.setLayout(new GridLayout(4, 3, 2, 2));
+
+        // --- BACK button ---
+        JPanel panel = new JPanel();
+        panel.setBorder(new LineBorder(new Color(128, 64, 0), 2));
+        MAINpanel.add(panel);
+        panel.setLayout(new BorderLayout(0, 0));
+        JButton BTNBACK = new JButton("BACK");
+        BTNBACK.addActionListener(e -> {
+            MainFrame mf = new MainFrame();
+            mf.mainframe.setVisible(true);
+            GAMEframe.dispose();
+        });
+        BTNBACK.setForeground(new Color(0, 255, 255));
+        BTNBACK.setBackground(new Color(255, 128, 128));
+        BTNBACK.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 35));
+        panel.add(BTNBACK, BorderLayout.CENTER);
+
+        // --- RESET button ---
+        JPanel panel_1 = new JPanel();
+        panel_1.setBorder(new LineBorder(new Color(128, 64, 0), 2));
+        MAINpanel.add(panel_1);
+        panel_1.setLayout(new BorderLayout(0, 0));
+        JButton BTNRESET = new JButton("RESET");
+        BTNRESET.setForeground(new Color(255, 0, 0));
+        BTNRESET.setBackground(new Color(128, 255, 255));
+        BTNRESET.addActionListener(e -> resetGame());
+        BTNRESET.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 35));
+        panel_1.add(BTNRESET, BorderLayout.CENTER);
+
+        // --- Score panel ---
+        JPanel panel_2 = new JPanel();
+        panel_2.setBorder(new LineBorder(new Color(128, 64, 0), 2));
+        MAINpanel.add(panel_2);
+        panel_2.setLayout(new GridLayout(2, 2, 0, 0));
+
+        JPanel panel_12 = new JPanel();
+        panel_12.setBackground(new Color(255, 0, 0));
+        panel_12.setBorder(new LineBorder(new Color(0, 0, 0)));
+        panel_2.add(panel_12);
+        panel_12.setLayout(new BorderLayout(0, 0));
+        JLabel lblNewLabel = new JLabel("PLAYER X");
+        lblNewLabel.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        panel_12.add(lblNewLabel, BorderLayout.CENTER);
+
+        JPanel panel_13 = new JPanel();
+        panel_13.setBorder(new LineBorder(new Color(0, 0, 0)));
+        panel_2.add(panel_13);
+        panel_13.setLayout(new BorderLayout(0, 0));
+        xCount = new JTextField("0");
+        xCount.setHorizontalAlignment(SwingConstants.CENTER);
+        xCount.setBackground(new Color(255, 128, 128));
+        panel_13.add(xCount, BorderLayout.CENTER);
+        xCount.setColumns(10);
+
+        JPanel panel_14 = new JPanel();
+        panel_14.setBackground(new Color(0, 255, 255));
+        panel_14.setBorder(new LineBorder(new Color(0, 0, 0)));
+        panel_2.add(panel_14);
+        panel_14.setLayout(new BorderLayout(0, 0));
+        JLabel lblNewLabel_1 = new JLabel("PLAYER O");
+        lblNewLabel_1.setFont(new Font("Viner Hand ITC", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+        panel_14.add(lblNewLabel_1, BorderLayout.CENTER);
+
+        JPanel panel_15 = new JPanel();
+        panel_15.setBorder(new LineBorder(new Color(0, 0, 0)));
+        panel_2.add(panel_15);
+        panel_15.setLayout(new BorderLayout(0, 0));
+        oCount = new JTextField("0");
+        oCount.setHorizontalAlignment(SwingConstants.CENTER);
+        oCount.setBackground(new Color(128, 255, 255));
+        panel_15.add(oCount, BorderLayout.CENTER);
+        oCount.setColumns(10);
+
+        // --- Game buttons ---
+        btn1 = createGameButton(1); MAINpanel.add(wrapButton(btn1));
+        btn2 = createGameButton(2); MAINpanel.add(wrapButton(btn2));
+        btn3 = createGameButton(3); MAINpanel.add(wrapButton(btn3));
+        btn4 = createGameButton(4); MAINpanel.add(wrapButton(btn4));
+        btn5 = createGameButton(5); MAINpanel.add(wrapButton(btn5));
+        btn6 = createGameButton(6); MAINpanel.add(wrapButton(btn6));
+        btn7 = createGameButton(7); MAINpanel.add(wrapButton(btn7));
+        btn8 = createGameButton(8); MAINpanel.add(wrapButton(btn8));
+        btn9 = createGameButton(9); MAINpanel.add(wrapButton(btn9));
+    }
+
+    private JButton createGameButton(int btnNumber) {
+        JButton btn = new JButton("");
+        btn.setFont(new Font("Tempus Sans ITC", Font.BOLD | Font.ITALIC, 70));
+        btn.addActionListener(e -> {
+            if (!btn.getText().equals("")) return;
+            btn.setText(startGame);
+            if (startGame.equalsIgnoreCase("X")) {
+                btn.setForeground(Color.RED);
+                setButtonValue(btnNumber, 1);
+            } else {
+                btn.setForeground(Color.BLUE);
+                setButtonValue(btnNumber, 0);
+            }
+            i++;
+            choosePlayer();
+            winningGame();
+        });
+        return btn;
+    }
+
+    private JPanel wrapButton(JButton btn) {
+        JPanel panel = new JPanel();
+        panel.setBorder(new LineBorder(new Color(128, 64, 0), 2));
+        panel.setLayout(new BorderLayout(0, 0));
+        panel.add(btn, BorderLayout.CENTER);
+        return panel;
+    }
+
+    private void setButtonValue(int btnNumber, int value) {
+        switch (btnNumber) {
+            case 1: b1 = value; break;
+            case 2: b2 = value; break;
+            case 3: b3 = value; break;
+            case 4: b4 = value; break;
+            case 5: b5 = value; break;
+            case 6: b6 = value; break;
+            case 7: b7 = value; break;
+            case 8: b8 = value; break;
+            case 9: b9 = value; break;
+        }
+    }
 }

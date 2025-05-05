@@ -52,7 +52,7 @@ public class MainFrame{
 		mainframe.setBounds(100, 100, 876, 571);
 		mainframe.setLocationRelativeTo(null);
         mainframe.setResizable(false);
-		mainframe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\1.png"));
+		mainframe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Renz\\OneDrive\\Documents\\GitHub\\TICTACPROG\\img\\1.png"));
 		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
@@ -72,7 +72,7 @@ public class MainFrame{
 		});
 		playbutton.setForeground(new Color(128, 255, 0));
 		playbutton.setBackground(new Color(0, 0, 0));
-		playbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\2.png"));
+		playbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\OneDrive\\Documents\\GitHub\\TICTACPROG\\img\\2.png"));
 		playbutton.setBounds(101, 159, 169, 74);
 		panel.add(playbutton);
 		
@@ -88,7 +88,7 @@ public class MainFrame{
 		 exitbutton.setBorderPainted(false);
 		exitbutton.setForeground(new Color(0, 255, 0));
 		exitbutton.setBackground(new Color(0, 0, 0));
-		exitbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\3.png"));
+		exitbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\OneDrive\\Documents\\GitHub\\TICTACPROG\\img\\3.png"));
 		exitbutton.setBounds(101, 408, 169, 80);
 		panel.add(exitbutton);
 		
@@ -103,7 +103,7 @@ public class MainFrame{
 		});
 		historybutton.setBackground(new Color(0, 0, 0));
 		 historybutton.setBorderPainted(false);
-		historybutton.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\4.png"));
+		historybutton.setIcon(new ImageIcon("C:\\Users\\Renz\\OneDrive\\Documents\\GitHub\\TICTACPROG\\img\\4.png"));
 		historybutton.setBounds(101, 232, 169, 86);
 		panel.add(historybutton);
 		
@@ -118,18 +118,18 @@ public class MainFrame{
 			}
 		);
 		 aboutbutton.setBorderPainted(false);
-		aboutbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\5.png"));
+		aboutbutton.setIcon(new ImageIcon("C:\\Users\\Renz\\OneDrive\\Documents\\GitHub\\TICTACPROG\\img\\5.png"));
 		aboutbutton.setBackground(new Color(0, 0, 0));
 		aboutbutton.setBounds(101, 318, 169, 88);
 		panel.add(aboutbutton);
 		
 		JLabel grid = new JLabel("");
-		grid.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\7.png"));
+		grid.setIcon(new ImageIcon("C:\\Users\\Renz\\OneDrive\\Documents\\GitHub\\TICTACPROG\\img\\7.png"));
 		grid.setBounds(306, 105, 479, 398);
 		panel.add(grid);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Renz\\Downloads\\finalicon\\IP(Icon)\\6.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Renz\\OneDrive\\Documents\\GitHub\\TICTACPROG\\img\\6.png"));
 		lblNewLabel.setBounds(317, -18, 468, 154);
 		panel.add(lblNewLabel);
 	}

@@ -55,7 +55,7 @@ public class OptionFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				MainFrame mf = new MainFrame();
-				mf.mainFrame.setVisible(true);
+				mf.mainframe.setVisible(true);
 				optionFrame.dispose();
 				
 			}

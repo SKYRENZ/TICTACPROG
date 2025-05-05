@@ -10,7 +10,6 @@ import java.awt.Button;
 import java.awt.Font;
 
 import java.awt.Color;
-import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextField;
