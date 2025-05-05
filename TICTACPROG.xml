@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\Renz\OneDrive\Documents\GitHub\TICTACPROG\bin\TICTACPROG.jar</jar>
+  <outfile>C:\Users\Renz\OneDrive\Documents\GitHub\TICTACPROG\TICTACPROG.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\Renz\Downloads\1.ico</icon>
+  <classPath>
+    <mainClass>MainFrame</mainClass>
+  </classPath>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>true</requiresJdk>
+    <requires64Bit>true</requires64Bit>
+    <minVersion>18.0</minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>
